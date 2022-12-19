@@ -9,32 +9,42 @@ import Meta from "../../components/Meta";
 
 //! using Nextjs API
 
-export const getStaticProps = async (context: any) => {
+// export const getStaticProps = async (context: any) => {
+//   const res = await fetch(`${server}/api/articles/${context.params.id}`);
+//   const article = await res.json();
+//   return {
+//     props: {
+//       article,
+//     },
+//   };
+// };
+
+// export const getStaticPaths = async () => {
+//   const res = await fetch(`${server}/api/articles/`);
+//   const articles = await res.json();
+
+//   const ids = articles.map((article: articleType) => article.id);
+
+//   const paths = ids.map((id: number) => ({ params: { id: id.toString() } }));
+
+//   //? expected format for return object is :-
+//   //* {
+//   //*     paths: { params: {id: "1", id: "2" }}
+//   //* }
+
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// };
+
+export const getServerSideProps = async (context: any) => {
   const res = await fetch(`${server}/api/articles/${context.params.id}`);
   const article = await res.json();
   return {
     props: {
       article,
     },
-  };
-};
-
-export const getStaticPaths = async () => {
-  const res = await fetch(`${server}/api/articles/`);
-  const articles = await res.json();
-
-  const ids = articles.map((article: articleType) => article.id);
-
-  const paths = ids.map((id: number) => ({ params: { id: id.toString() } }));
-
-  //? expected format for return object is :-
-  //* {
-  //*     paths: { params: {id: "1", id: "2" }}
-  //* }
-
-  return {
-    paths,
-    fallback: false,
   };
 };
 
