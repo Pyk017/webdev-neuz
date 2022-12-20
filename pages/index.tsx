@@ -11,7 +11,7 @@ export type articleType = {
 };
 
 //! Method 1: using third-party/dummy API
-/*
+
 export const getStaticProps = async () => {
   const res = await fetch(
     "https://jsonplaceholder.typicode.com/posts?_limit=7"
@@ -24,20 +24,19 @@ export const getStaticProps = async () => {
     },
   };
 };
-*/
 
 //! Method 2: using nextjs api
 
-export const getServerSideProps = async () => {
-  const res = await fetch(`${server}/api/articles`);
-  const articles = await res.json();
+// export const getServerSideProps = async () => {
+//   const res = await fetch(`${server}/api/articles`);
+//   const articles = await res.json();
 
-  return {
-    props: {
-      articles,
-    },
-  };
-};
+//   return {
+//     props: {
+//       articles,
+//     },
+//   };
+// };
 
 export default function Home({ articles }: { articles: articleType[] }) {
   return (

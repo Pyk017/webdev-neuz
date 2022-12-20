@@ -38,15 +38,15 @@ import Meta from "../../components/Meta";
 //   };
 // };
 
-export const getServerSideProps = async (context: any) => {
-  const res = await fetch(`${server}/api/articles/${context.params.id}`);
-  const article = await res.json();
-  return {
-    props: {
-      article,
-    },
-  };
-};
+// export const getServerSideProps = async (context: any) => {
+//   const res = await fetch(`${server}/api/articles/${context.params.id}`);
+//   const article = await res.json();
+//   return {
+//     props: {
+//       article,
+//     },
+//   };
+// };
 
 //! Method 1 using only getServerSideProps (without using nextjs api)
 /*
@@ -64,7 +64,7 @@ export const getServerSideProps = async (context: any) => {
 */
 
 //! Method 2 using getStaticProps and getStaticPaths together  (much faster) (without using nextjs api)
-/*
+
 export const getStaticProps = async (context: any) => {
   const res = await fetch(
     `https://jsonplaceholder.typicode.com/posts/${context.params.id}`
@@ -95,7 +95,6 @@ export const getStaticPaths = async () => {
     fallback: false,
   };
 };
-*/
 
 const Article = ({ article }: { article: articleType }) => {
   //? This is a method to use the query passed in the address.
